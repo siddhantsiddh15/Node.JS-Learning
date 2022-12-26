@@ -1,17 +1,24 @@
 {
-  "name": "node-js-learning",
+  "name": "js-learning",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    
     "test": "echo \"Error: no test specified\" && exit 1"
-    
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "csv-parse": "^5.3.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddhantsiddh15/Node.JS-Learning.git"
+  },
+  "bugs": {
+    "url": "https://github.com/siddhantsiddh15/Node.JS-Learning/issues"
+  },
+  "homepage": "https://github.com/siddhantsiddh15/Node.JS-Learning#readme",
+  "description": ""
 }
