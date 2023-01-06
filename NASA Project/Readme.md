@@ -779,3 +779,58 @@ const launchId = req.params.id;
 
 ```
 
+### Versioning our APIs
+
+We will create a route /v1/planets and will re-direct our requests to this router.
+
+To make things cleaner we need to make a separate file for our versions. Since we are using 1 version only we will make a single file named api.js (for this example) in our routes and send all our requests to the api.js
+
+For now the api.js will look like this
+
+```
+const {planetsRouter} = require('./planets/planets.router');
+const {launchesRouter} = require('./launches/launches.router')
+
+const express = require('express');
+
+const api = express.Router();
+
+api.use('/planets',planetsRouter);
+api.use('/launches', launchesRouter);
+
+
+module.exports = {
+    api
+}
+
+```
+
+Following things are being done in this file
+
+1 . The planets and launches router modules are being imported here
+
+2 . There is no express module here so we imported the express using ``` require('express') ```
+
+3 . We need the Router() functionality of express so we created api object just like we created planetsRouter and launchRouter in planets.router.js and launches.router.js
+
+4 . Now we have the the two middleware and we export the api object. 
+
+Inside app.js we will import our api module and use the following middleware
+
+```
+app.use('/v1',api)
+
+```
+
+Incase we have many more version we will use the similar process. 
+
+We updated our routers but we need to update our frontend as well. 
+
+Go to the requests hook and change the API_URL which is base URL to
+
+```
+const API_URL = 'http://localhost:8000/v1';
+
+```
+
+Run the deploy and our project will listen at 8000
